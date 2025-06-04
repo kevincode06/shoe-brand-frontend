@@ -1,0 +1,250 @@
+/* Home.css */
+.home-container {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+/* Hero Section Styles */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+              url('/src/assets/shoes/front-picture2.jpg') center/cover no-repeat;
+}
+
+.hero-content {
+  text-align: center;
+  color: white;
+  padding: 2rem;
+  max-width: 800px;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 900;
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.hero-button {
+  padding: 1rem 2.5rem;
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  border-radius: 0;
+  font-weight: bold;
+  border: 2px solid white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: white;
+  color: #000;
+}
+
+/* Collection Section Styles */
+.collection-section {
+  padding: 5rem 2rem;
+  text-align: center;
+  background-color: #000;
+  color: white;
+}
+
+.collection-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.collection-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #aaa;
+}
+
+.collection-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.collection-button {
+  padding: 1rem 3rem;
+  background-color: white;
+  color: #000;
+  text-decoration: none;
+  border-radius: 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.collection-button:hover {
+  background-color: #ddd;
+}
+
+/* Trending Section Styles */
+.trending-section {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #f8f9fa;
+}
+
+.trending-section h2 {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #333;
+}
+
+.trending-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.trending-item {
+  background-color: white;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.trending-item:hover {
+  transform: translateY(-10px);
+}
+
+.trending-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.trending-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.trending-link {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background-color: #000;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.trending-link:hover {
+  background-color: #333;
+}
+
+/* CTA Section Styles */
+.cta-section {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: black;
+  color: white;
+}
+
+.cta-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.cta-section p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.auth-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.auth-button {
+  padding: 0.8rem 2rem;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.login-button {
+  background-color: white;
+  color: #333;
+}
+
+.login-button:hover {
+  background-color: #f1f1f1;
+}
+
+.register-button {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.register-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+  
+  .hero-buttons, .auth-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .trending-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .collection-content h2 {
+    font-size: 1.8rem;
+  }
+}
