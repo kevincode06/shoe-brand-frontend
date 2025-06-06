@@ -10,11 +10,9 @@ const ProtectedRoute = ({ children, allowedBrands = [], allowedRoles = [] }) => 
     return <Navigate to="/login" replace />;
   }
 
-  // Normalize user role and brand to lowercase strings
   const userRole = user.role?.toLowerCase() || '';
   const userBrand = user.brand?.toLowerCase() || '';
 
-  // Normalize allowed roles and brands to lowercase for case-insensitive comparison
   const allowedBrandsNormalized = allowedBrands.map(b => b.toLowerCase());
   const allowedRolesNormalized = allowedRoles.map(r => r.toLowerCase());
 

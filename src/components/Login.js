@@ -14,16 +14,18 @@ const Login = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post('/auth/login', { email, password });
+
+      // ✅ Save user to auth context
       login(data);
-      
-      // Redirect based on user role and brand
-      if (data.role === 'super_admin') {
+
+      const user = data.user;
+
+      // ✅ Redirect based on role/brand
+      if (user.role === 'super_admin') {
         navigate('/dashboard');
-      } else if (data.brand) {
-        // Ensure brand name is lowercase for URL consistency
-        navigate(`/${data.brand.toLowerCase()}`);
+      } else if (user.brand) {
+        navigate(`/${user.brand.toLowerCase()}`);
       } else {
-        // Fallback for users without brand assignment
         navigate('/');
       }
     } catch (err) {
@@ -35,6 +37,7 @@ const Login = () => {
     <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: '2rem auto' }}>
       <h2>Login</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
+
       <input
         type="email"
         placeholder="Email"
@@ -43,6 +46,7 @@ const Login = () => {
         required
         style={{ width: '100%', padding: '0.5rem', marginBottom: '1rem' }}
       />
+
       <input
         type="password"
         placeholder="Password"
@@ -51,8 +55,14 @@ const Login = () => {
         required
         style={{ width: '100%', padding: '0.5rem', marginBottom: '1rem' }}
       />
-      <button type="submit" style={{ width: '100%', padding: '0.5rem' }}>Login</button>
-      <p>Don't have an account? <Link to="/register">Register</Link></p>
+
+      <button type="submit" style={{ width: '100%', padding: '0.5rem' }}>
+        Login
+      </button>
+
+      <p style={{ marginTop: '1rem' }}>
+        Don't have an account? <Link to="/register">Register</Link>
+      </p>
     </form>
   );
 };

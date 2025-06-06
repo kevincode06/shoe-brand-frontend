@@ -1,7 +1,5 @@
-// src/pages/Register.js
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import axios from '../api';
-import { AuthContext } from '../contexts/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 
 const Register = () => {
@@ -9,32 +7,26 @@ const Register = () => {
     name: '',
     email: '',
     password: '',
-    brand: 'Nike', // Capitalized for backend schema match
-    role: 'brand_user'
+    brand: 'Nike',
+    role: 'brand_user',
   });
   const [error, setError] = useState('');
-  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = e => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('/auth/register', form);
-      login(data);
-  
-      if (form.role === 'super_admin') {
-        navigate('/dashboard');
-      } else {
-        navigate(`/${form.brand}`);
-      }
-  
+      await axios.post('/auth/register', form);
+      // ✅ Successful registration — send user to login
+      navigate('/login');
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');
     }
   };
-  
 
   return (
     <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: '2rem auto' }}>
