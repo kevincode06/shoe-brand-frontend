@@ -3,6 +3,8 @@ import axios from 'axios';
 // Use your env variable, fallback to localhost if undefined
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
+console.log('API_URL:', API_URL);
+
 const axiosInstance = axios.create({
   baseURL: API_URL,
 });
