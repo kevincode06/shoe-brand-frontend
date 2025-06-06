@@ -7,21 +7,39 @@ const Register = () => {
     name: '',
     email: '',
     password: '',
-    brand: 'Nike',
     role: 'brand_user',
+    brand: 'Nike', // default for brand users
   });
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleChange = e => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    // Reset brand if switching role
+    if (name === 'role') {
+      if (value === 'super_admin') {
+        setForm((prev) => ({ ...prev, role: value, brand: '' }));
+      } else {
+        setForm((prev) => ({ ...prev, role: value, brand: 'Nike' }));
+      }
+    } else {
+      setForm((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const payload = { ...form };
+
+    // ❌ Remove brand if admin
+    if (form.role === 'super_admin') {
+      delete payload.brand;
+    }
+
     try {
-      await axios.post('/auth/register', form);
-      // ✅ Successful registration — send user to login
+      await axios.post('/auth/register', payload);
       navigate('/login');
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');
@@ -64,17 +82,6 @@ const Register = () => {
       />
 
       <select
-        name="brand"
-        value={form.brand}
-        onChange={handleChange}
-        style={{ width: '100%', padding: '0.5rem', marginBottom: '1rem' }}
-      >
-        <option value="Nike">Nike</option>
-        <option value="Adidas">Adidas</option>
-        <option value="Puma">Puma</option>
-      </select>
-
-      <select
         name="role"
         value={form.role}
         onChange={handleChange}
@@ -83,6 +90,20 @@ const Register = () => {
         <option value="brand_user">Brand User</option>
         <option value="super_admin">Super Admin</option>
       </select>
+
+      {/* Only show brand select if role is brand_user */}
+      {form.role === 'brand_user' && (
+        <select
+          name="brand"
+          value={form.brand}
+          onChange={handleChange}
+          style={{ width: '100%', padding: '0.5rem', marginBottom: '1rem' }}
+        >
+          <option value="Nike">Nike</option>
+          <option value="Adidas">Adidas</option>
+          <option value="Puma">Puma</option>
+        </select>
+      )}
 
       <button type="submit" style={{ width: '100%', padding: '0.5rem' }}>
         Register
