@@ -36,26 +36,26 @@ const Home = () => {
         <div className="trending-grid">
           <div className="trending-item">
             <img src={nike5} alt="Speed cat" />
-            <h4>Speed cat</h4>
-            <h3>SPEED CAT</h3>
+            <h4>Nike </h4>
+            <h3>Air Jordan</h3>
             <Link to="/register" className="trending-link">SHOP NOW</Link>
           </div>
           <div className="trending-item">
             <img src={puma3} alt="Suede-XL" />
-            <h4>Suede-XL</h4>
+            <h4>Puma</h4>
             <h3>SUEDE-XL</h3>
             <Link to="/register" className="trending-link">SHOP NOW</Link>
           </div>
           <div className="trending-item">
             <img src={ad7} alt="East Rider" />
-            <h4>East Rider</h4>
+            <h4>Adidas</h4>
             <h3>EAST RIDER</h3>
             <Link to="/register" className="trending-link">SHOP NOW</Link>
           </div>
           <div className="trending-item">
             <img src={newNike} alt="Palermo" />
-            <h4>Palermo</h4>
-            <h3>PALERMO</h3>
+            <h4>Nike</h4>
+            <h3>Air Force</h3>
             <Link to="/register" className="trending-link">SHOP NOW</Link>
           </div>
         </div>
